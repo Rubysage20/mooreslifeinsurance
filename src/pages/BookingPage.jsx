@@ -145,50 +145,60 @@ const BookingPage = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
+  if (!validateForm()) {
+    return;
+  }
 
-    setLoading(true);
+  setLoading(true);
 
-    try {
-      // Replace with actual API call
-      const appointmentData = {
-        ...formData,
-        selectedDate,
-        selectedTimeUtc: selectedTime.utc,
-        clientTime: selectedTime.clientTime,
-        brokerTime: selectedTime.brokerTime
-      };
+  try {
+    const appointmentData = {
+      ...formData,
+      selectedDate,
+      selectedTimeUtc: selectedTime.utc,
+      clientTime: selectedTime.clientTime,
+      brokerTime: selectedTime.brokerTime
+    };
 
-      // const response = await fetch('/api/appointments', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(appointmentData)
-      // });
-      // const result = await response.json();
+    // Submit to Netlify Forms
+    const formBody = new URLSearchParams({
+      'form-name': 'appointment',
+      name: appointmentData.name,
+      email: appointmentData.email,
+      phone: appointmentData.phone,
+      timezone: appointmentData.timezone,
+      appointmentType: appointmentData.appointmentType,
+      date: appointmentData.selectedDate,
+      clientTime: appointmentData.clientTime,
+      brokerTime: appointmentData.brokerTime,
+      notes: appointmentData.notes || 'None'
+    });
 
-      // Mock success
-      console.log('Booking:', appointmentData);
-      
-      // Navigate to confirmation page with data
-      navigate('/confirmation', { 
-        state: { 
-          appointment: {
-            ...appointmentData,
-            confirmationCode: 'APT-' + Math.random().toString(36).substr(2, 6).toUpperCase()
-          }
-        } 
-      });
-    } catch (error) {
-      console.error('Error booking appointment:', error);
-      alert('There was an error booking your appointment. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
+    await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formBody.toString()
+    });
+
+    const confirmationCode = 'APT-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+
+    navigate('/confirmation', {
+      state: {
+        appointment: {
+          ...appointmentData,
+          confirmationCode
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Error booking appointment:', error);
+    alert('There was an error booking your appointment. Please try again.');
+  } finally {
+    setLoading(false);
+  }
+};
 
   // Generate next 30 days for date selection
   const getAvailableDates = () => {

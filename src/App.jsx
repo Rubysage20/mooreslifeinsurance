@@ -94,7 +94,7 @@ function App() {
                 <p className="text-gray-400 text-sm">
                   Phone: (667) 481-5704
                   <br />
-                  Email: moorsreality@gmail.com
+                  Email: javon@mooresinsurancellc.com
                   <br />
                   Licensed in: MD, VA, DC, GA, TX, NC, AL, AZ, AR, FL, IN, KY, LA, MI, SC, TN, WA, WI, WV
                 </p>
