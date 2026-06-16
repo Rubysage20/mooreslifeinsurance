@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import AboutPage from './pages/AboutPage';
 import CredentialsPage from './pages/CredentialsPage';
@@ -7,6 +7,8 @@ import ConfirmationPage from './pages/ConfirmationPage';
 import './App.css';
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
@@ -14,56 +16,77 @@ function App() {
         <header className="bg-white shadow-sm sticky top-0 z-50">
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
-             {/* Logo Section */}
-<Link to="/" className="flex items-center">
-  <div className="flex items-center">
-    {/* The Logo Image */}
-    <img 
-      src="/images/logo.jpg" 
-      alt="Moores Life Insurance" 
-      className="w-10 h-10 object-contain rounded-md"
-      // This ensures if the image is missing, it doesn't leave a "broken icon" border
-      onError={(e) => { e.target.style.display = 'none'; }} 
-    />
+              {/* Logo Section */}
+              <Link to="/" className="flex items-center">
+                <img
+                  src="/images/logo.jpg"
+                  alt="Moores Life Insurance"
+                  className="w-10 h-10 object-contain rounded-md"
+                  onError={(e) => { e.target.style.display = 'none'; }}
+                />
+                <span className="ml-3 text-xl font-semibold text-gray-900">
+                  Moores Life Insurance
+                </span>
+              </Link>
 
-    {/* The Brand Name */}
-    <span className="ml-3 text-xl font-semibold text-gray-900">
-      Moores Life Insurance
-    </span>
-  </div>
-</Link>
-
-              {/* Navigation Links */}
+              {/* Desktop Navigation Links */}
               <div className="hidden md:flex space-x-8">
-                <Link
-                  to="/"
-                  className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition"
-                >
+                <Link to="/" className="text-gray-700 hover:text-yellow-600 px-3 py-2 text-sm font-medium transition">
                   About
                 </Link>
-                <Link
-                  to="/credentials"
-                  className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition"
-                >
+                <Link to="/credentials" className="text-gray-700 hover:text-yellow-600 px-3 py-2 text-sm font-medium transition">
                   Credentials
                 </Link>
-                <Link
-                  to="/book"
-                  className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-6 py-2 rounded-lg text-sm font-medium hover:from-yellow-600 hover:to-yellow-700 transition shadow-md"
-                >
+                <Link to="/book" className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-6 py-2 rounded-lg text-sm font-medium hover:from-yellow-600 hover:to-yellow-700 transition shadow-md">
                   Book Appointment
                 </Link>
               </div>
 
               {/* Mobile Menu Button */}
               <div className="md:hidden">
-                <button className="text-gray-700 hover:text-blue-600">
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
+                <button
+                  onClick={() => setMenuOpen(!menuOpen)}
+                  className="text-gray-700 hover:text-yellow-600"
+                >
+                  {menuOpen ? (
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  ) : (
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  )}
                 </button>
               </div>
             </div>
+
+            {/* Mobile Dropdown Menu */}
+            {menuOpen && (
+              <div className="md:hidden border-t border-gray-100 py-4 space-y-2">
+                <Link
+                  to="/"
+                  onClick={() => setMenuOpen(false)}
+                  className="block px-4 py-2 text-gray-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-lg text-sm font-medium transition"
+                >
+                  About
+                </Link>
+                <Link
+                  to="/credentials"
+                  onClick={() => setMenuOpen(false)}
+                  className="block px-4 py-2 text-gray-700 hover:text-yellow-600 hover:bg-yellow-50 rounded-lg text-sm font-medium transition"
+                >
+                  Credentials
+                </Link>
+                <Link
+                  to="/book"
+                  onClick={() => setMenuOpen(false)}
+                  className="block px-4 py-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black rounded-lg text-sm font-medium hover:from-yellow-600 hover:to-yellow-700 transition shadow-md text-center"
+                >
+                  Book Appointment
+                </Link>
+              </div>
+            )}
           </nav>
         </header>
 
@@ -103,19 +126,13 @@ function App() {
                 <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <Link to="/" className="text-gray-400 hover:text-white transition">
-                      About
-                    </Link>
+                    <Link to="/" className="text-gray-400 hover:text-white transition">About</Link>
                   </li>
                   <li>
-                    <Link to="/credentials" className="text-gray-400 hover:text-white transition">
-                      Credentials
-                    </Link>
+                    <Link to="/credentials" className="text-gray-400 hover:text-white transition">Credentials</Link>
                   </li>
                   <li>
-                    <Link to="/book" className="text-gray-400 hover:text-white transition">
-                      Book Appointment
-                    </Link>
+                    <Link to="/book" className="text-gray-400 hover:text-white transition">Book Appointment</Link>
                   </li>
                 </ul>
               </div>
