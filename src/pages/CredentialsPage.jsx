@@ -27,7 +27,7 @@ const CredentialsPage = () => {
           license_number: '3002687577',
           issue_date: '2026-01-01',
           status: 'Active',
-          verification_url: 'https://sbs.naic.org/solar-external-lookup/?jurisdiction=MD&searchType=Licensee',
+          verification_url: 'https://external-lookup-web.prod.naic.org/',
           license_photo_url: null//photo url
         },
         {
@@ -47,7 +47,7 @@ const CredentialsPage = () => {
           license_number: '3003230720',
           issue_date: '2024-08-13',
           status: 'Active',
-          verification_url: 'https://sbs.naic.org/solar-external-lookup/?jurisdiction=DC&searchType=Licensee',
+          verification_url: 'https://external-lookup-web.prod.naic.org/',
           license_photo_url: null
         },
         {
@@ -57,7 +57,7 @@ const CredentialsPage = () => {
           license_number: '3746626',
           issue_date: '2024-09-19',
           status: 'Active',
-          verification_url: 'https://www.sircon.com/ComplianceExpress/Inquiry/consumerInquiry.do',
+          verification_url: 'https://www.sircon.com/ComplianceExpress/Inquiries/index.jsp?1=0&lid=lp_georgia7&sc=omzrpbgd&sscrbid=9034&path=georgia',
           license_photo_url: '/licenses/Georgia.png'
         },
         {
@@ -77,7 +77,7 @@ const CredentialsPage = () => {
           license_number: '20831334',
           issue_date: '2024-04-15',
           status: 'Active',
-          verification_url: 'https://sbs.naic.org/solar-external-lookup/?jurisdiction=NC&searchType=Licensee',
+          verification_url: 'https://external-lookup-web.prod.naic.org/',
           license_photo_url: null
         },
          {
@@ -87,7 +87,7 @@ const CredentialsPage = () => {
           license_number: '20831334',
           issue_date: '2024-10-26',
           status: 'Active',
-          verification_url: 'https://sbs.naic.org/solar-external-lookup/?jurisdiction=SC&searchType=Licensee',
+          verification_url: 'https://external-lookup-web.prod.naic.org/',
           license_photo_url: '/licenses/SouthCarolina.png'
         },
          {
@@ -97,7 +97,7 @@ const CredentialsPage = () => {
           license_number: '20831334',
           issue_date: '2024-12-05',
           status: 'Active',
-          verification_url: 'https://sbs.naic.org/solar-external-lookup/?jurisdiction=WV&searchType=Licensee',
+          verification_url: 'https://external-lookup-web.prod.naic.org/',
           license_photo_url: '/licenses/WestVirginia.png'
         },
          {
@@ -117,7 +117,7 @@ const CredentialsPage = () => {
           license_number: '20831334',
           issue_date: '2025-05-16',
           status: 'Active',
-          verification_url: 'https://sbs.naic.org/solar-external-lookup/?jurisdiction=AR&searchType=Licensee',
+          verification_url: 'https://external-lookup-web.prod.naic.org/',
           license_photo_url: '/licenses/Arkansas.png'
         },
          {
@@ -127,7 +127,7 @@ const CredentialsPage = () => {
           license_number: '20831334',
           issue_date: '2025-09-16',
           status: 'Active',
-          verification_url: 'https://sbs.naic.org/solar-external-lookup/?jurisdiction=AZ&searchType=Licensee',
+          verification_url: 'https://external-lookup-web.prod.naic.org/',
           license_photo_url: '/licenses/Arizona.png'
         },
          {
@@ -147,7 +147,7 @@ const CredentialsPage = () => {
           license_number: '3003358112',
           issue_date: '2024-10-27',
           status: 'Active',
-          verification_url: 'https://sbs.naic.org/solar-external-lookup/?jurisdiction=AL&searchType=Licensee',
+          verification_url: 'https://external-lookup-web.prod.naic.org/',
           license_photo_url: '/licenses/Alabama.png'
         },
          {
@@ -157,7 +157,7 @@ const CredentialsPage = () => {
           license_number: '3003381794 ',
           issue_date: '2024-11-13',
           status: 'Active',
-          verification_url: 'https://sbs.naic.org/solar-external-lookup/?jurisdiction=TN&searchType=Licensee',
+          verification_url: 'https://external-lookup-web.prod.naic.org/',
           license_photo_url: '/licenses/Tennessee.png'
         },
          {
@@ -187,7 +187,7 @@ const CredentialsPage = () => {
           license_number: '20831334',
           issue_date: '2024-12-03',
           status: 'Active',
-          verification_url: 'https://sbs.naic.org/solar-external-lookup/?jurisdiction=WI&searchType=Licensee',
+          verification_url: 'https://external-lookup-web.prod.naic.org/',
           license_photo_url: '/licenses/Wisconsin.png'
         },
          {
